@@ -1,28 +1,30 @@
-import React, { useState } from "react";
-// import ReactDOM from'react-dom/client';
+import React from "react";
 import "./App.css";
 import Hello from "./hello";
-
-// const root = ReactDOM.createRoot(document.getElementById('root'));
-
+import { Button, message } from "antd";
 function App() {
-  
-  
   class Count extends React.Component {
     state = { num: 0 };
     render() {
       let { num } = this.state;
       return (
         <div>
-          {num}
-          <button onClick={()=>{
-            num++;
-            this.setState({num}) 
-          }}>递加</button>
+          <div>{num}</div>
+          <div>
+            <Button
+              onClick={() => {
+                message.success("递增成功");
+                num++;
+                this.setState({ num });
+              }}
+            >
+              递加
+            </Button>
+          </div>
         </div>
       );
     }
-  } 
+  }
   return (
     <div className="App">
       <header className="App-header">
@@ -30,7 +32,6 @@ function App() {
         <Hello />
         <Count />
         {/* <div>{arr}</div> */}
-        
       </header>
     </div>
   );
